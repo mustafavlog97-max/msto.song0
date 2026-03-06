@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>موزیک - موحسین چاڤۆشی</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/nizar-nastaliq-kurdish" rel="stylesheet">
 
 <style>
-  /* 🖋️ شێوازی نوێ بۆ بانگکردنی فۆنتی نەستەعلیق بۆ مۆبایل */
-  @import url('https://fonts.cdnfonts.com/css/nizar-nastaliq-kurdish');
-
   :root {
     --bg-primary: #0a0a0a;
     --bg-secondary: #111111;
     --bg-tertiary: #1a1a1a;
     --bg-hover: #222222;
     --green: #1db954;
-    --green-bright: #1ed760;
-    --green-dim: #158a3e;
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
     --text-dim: #555555;
@@ -26,19 +25,20 @@
     --sidebar-width: 240px;
   }
 
-  /* 🌈 RGB Watermark Style - مستۆ */
+  /* 🌈 RGB Watermark Style - (مستۆ) */
   .msto-rgb-watermark {
       position: fixed;
-      top: 15px; 
-      left: 20px; 
-      font-size: 42px; 
-      /* لێرە ناوی فۆنتەکە بە وردی دانراوە */
-      font-family: 'Nizar Nastaliq Kurdish', 'Nizar Nastaliq', serif !important;
+      top: 20px; 
+      left: 25px; 
+      font-size: 45px !important;
+      /* زیادکردنی چەند ناوێکی تری فۆنتەکە بۆ دڵنیایی لە ئایفۆن */
+      font-family: 'Nizar Nastaliq Kurdish', 'Nizar Nastaliq', 'nizar_nastaliq_kurdish', serif !important;
       z-index: 9999; 
       pointer-events: none;
       animation: rgb-text 5s infinite linear;
       direction: rtl;
-      filter: drop-shadow(0 0 12px rgba(0,0,0,0.9));
+      -webkit-font-smoothing: antialiased;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
   }
 
   @keyframes rgb-text {
@@ -347,3 +347,4 @@ renderSongs(songs, 'songList');
 </script>
 </body>
 </html>
+
