@@ -83,7 +83,7 @@
   .song-num { color: var(--text-secondary); text-align: center; }
   .song-info { display: flex; align-items: center; gap: 14px; }
   .song-thumb { width: 42px; height: 42px; border-radius: 6px; overflow: hidden; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; }
-  .song-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .song-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
   .song-title { font-size: 15px; font-weight: 500; }
   .song-artist { font-size: 13px; color: var(--text-secondary); }
   .song-album, .song-duration { color: var(--text-secondary); font-size: 14px; }
@@ -106,6 +106,23 @@
 
   .views { display: none; }
   .views.active { display: block; }
+
+  /* 📱 مۆبایل - Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      grid-template-columns: 1fr;
+      grid-template-areas: "main" "player";
+    }
+    #sidebar { display: none; }
+    .main-header { padding: 20px; flex-direction: column; align-items: center; text-align: center; }
+    .artist-cover { width: 150px; height: 150px; }
+    .artist-info h1 { font-size: 28px; }
+    .table-header { display: none; }
+    .song-row { grid-template-columns: 30px 40px 1fr 60px; padding: 12px 10px; margin: 0 5px; }
+    .song-album { display: none; }
+    .player-right, .progress-row { display: none; }
+    #player { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -197,7 +214,6 @@ const songs = [
   { title: "هم خواب", album: "Hamkhab", cover: "music/cover3.jpg", audioSrc: "music/3.mp3", duration: "٢:٥٧" },
   { title: "من بیاد میرافتم", album: "Man Bayad Miraftam", cover: "music/cover4.jpg", audioSrc: "music/4.mp3", duration: "٣:٤٣" },
   { title: "ملکا", album: "maleka", cover: "music/cover5.jpg", audioSrc: "music/5.mp3", duration: "٤:٢٦" },
-
 ];
 
 const audio = document.getElementById('audioPlayer');
