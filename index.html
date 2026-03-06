@@ -22,6 +22,27 @@
     --sidebar-width: 240px;
   }
 
+  /* 🌈 RGB Watermark Style */
+  .msto-rgb-watermark {
+      position: fixed;
+      bottom: 100px;
+      left: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 1000;
+      pointer-events: none;
+      animation: rgb-text 5s infinite linear;
+  }
+
+  @keyframes rgb-text {
+      0% { color: #ff0000; text-shadow: 0 0 5px #ff0000; }
+      20% { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; }
+      40% { color: #0000ff; text-shadow: 0 0 5px #0000ff; }
+      60% { color: #00ffff; text-shadow: 0 0 5px #00ffff; }
+      80% { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
+      100% { color: #ff0000; text-shadow: 0 0 5px #ff0000; }
+  }
+
   .watermark-container {
       position: fixed;
       bottom: 100px;
@@ -127,9 +148,7 @@
 </head>
 <body>
 
-<div class="watermark-container">
-    <span class="watermark-text">مستۆ</span>
-</div>
+<div class="msto-rgb-watermark">مستۆ</div>
 
 <aside id="sidebar">
   <div class="logo">🎵 گۆرانیەکان</div>
@@ -216,7 +235,6 @@ const songs = [
   { title: "ملکا", album: "maleka", cover: "music/cover5.jpg", audioSrc: "music/5.mp3", duration: "٤:٢٦" },
   { title: "زنگ زبور", album: "tanhaye", cover: "music/cover6.jpg", audioSrc: "music/6.mp3", duration: "٣:١٧" },
   { title: "فاصلە", album: "faseleh", cover: "music/cover7.jpg", audioSrc: "music/7.mp3", duration: "٥:١٤" },
-
 ];
 
 const audio = document.getElementById('audioPlayer');
@@ -335,6 +353,3 @@ renderSongs(songs, 'songList');
 </script>
 </body>
 </html>
-
-
-
