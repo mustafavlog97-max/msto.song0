@@ -19,7 +19,6 @@
             --sidebar-width: 260px;
         }
 
-        /* 🌈 واتەرمارکی مستۆ RGB */
         .msto-watermark {
             position: fixed; top: 25px; left: 25px;
             font-size: 45px; font-family: 'Nizar Nastaliq Kurdish', serif;
@@ -33,7 +32,6 @@
             100% { color: #ff0000; text-shadow: 0 0 15px #ff0000; }
         }
 
-        /* 🔄 ئەنیمەیشنی سوڕانەوەی خۆرەکە */
         @keyframes rotate-sun {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -58,99 +56,60 @@
             background: var(--sidebar-bg);
             padding: 25px;
             border-left: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: flex; flex-direction: column; gap: 15px;
         }
         .logo { font-size: 24px; font-weight: 900; color: var(--primary); margin-bottom: 20px; }
         .nav-item {
-            padding: 12px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            color: var(--text-gray);
-            display: flex; align-items: center; gap: 15px;
+            padding: 12px 15px; border-radius: 10px; cursor: pointer;
+            color: var(--text-gray); display: flex; align-items: center; gap: 15px;
             font-weight: 700; transition: 0.3s;
         }
         .nav-item:hover, .nav-item.active { background: var(--card-hover); color: var(--text-white); }
 
-        #main {
-            grid-area: main;
-            overflow-y: auto;
-            background: linear-gradient(180deg, #122c1e 0%, #050505 40%);
-            padding-bottom: 40px;
-        }
+        #main { grid-area: main; overflow-y: auto; background: linear-gradient(180deg, #122c1e 0%, #050505 40%); padding-bottom: 40px; }
 
-        /* ☀️ شریتی هێدەر */
         .banner-container {
-            margin: 40px;
-            padding: 30px;
+            margin: 40px; padding: 30px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
+            border-radius: 20px; display: flex; justify-content: space-between;
+            align-items: center; backdrop-filter: blur(10px);
         }
 
         .banner-left { display: flex; align-items: center; gap: 40px; }
-        .sun-spin {
-            width: 140px;
-            height: 140px;
-            animation: rotate-sun 12s infinite linear;
-            filter: drop-shadow(0 0 15px #ffcc00);
-        }
         
-        .header-text h1 { font-size: 60px; font-weight: 900; letter-spacing: -1px; }
-        .hero-img-box img {
-            width: 180px; height: 180px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            object-fit: cover;
+        /* ☀️ ڕێکخستنی وێنەی خۆرەکە */
+        .sun-spin { 
+            width: 140px; height: 140px; 
+            animation: rotate-sun 12s infinite linear; 
+            filter: drop-shadow(0 0 15px #ffcc00);
+            object-fit: contain;
         }
 
+        .header-text h1 { font-size: 60px; font-weight: 900; }
+        .hero-img-box img { width: 180px; height: 180px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover; }
+
         .song-list-container { padding: 0 40px; }
-        .table-header {
-            display: grid;
-            grid-template-columns: 50px 1fr 180px 100px 50px;
-            padding: 15px 20px;
-            color: var(--text-gray);
-            font-size: 13px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .song-row {
-            display: grid;
-            grid-template-columns: 50px 1fr 180px 100px 50px;
-            padding: 12px 20px;
-            align-items: center;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+        .table-header { display: grid; grid-template-columns: 50px 1fr 180px 100px 50px; padding: 15px 20px; color: var(--text-gray); font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .song-row { display: grid; grid-template-columns: 50px 1fr 180px 100px 50px; padding: 12px 20px; align-items: center; border-radius: 10px; cursor: pointer; transition: 0.2s; }
         .song-row:hover { background: var(--card-hover); }
         .song-row.playing { color: var(--primary); background: rgba(29, 185, 84, 0.05); }
         .song-title-group { display: flex; align-items: center; gap: 15px; }
         .song-row img { width: 45px; height: 45px; border-radius: 6px; }
 
-        #player {
-            grid-area: player;
-            background: #000;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            padding: 0 30px;
-            align-items: center;
-        }
+        #player { grid-area: player; background: #000; border-top: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: 1fr 2fr 1fr; padding: 0 30px; align-items: center; }
+        .control-btns { display: flex; align-items: center; gap: 25px; }
         .play-btn { width: 45px; height: 45px; background: #fff; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; }
         .repeat-btn { background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; opacity: 0.5; transition: 0.3s; }
         .repeat-btn.active { opacity: 1; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
         .progress-container { width: 100%; display: flex; align-items: center; gap: 10px; direction: ltr; }
         .progress-bar { flex: 1; height: 5px; background: #333; border-radius: 10px; cursor: pointer; position: relative; }
-        .progress-fill { height: 100%; background: var(--primary); width: 0%; border-radius: 10px; }
+        .progress-fill { height: 100%; background: var(--primary); width: 0%; border-radius: 10px; transition: width 0.1s linear; }
 
         .view { display: none; }
         .view.active { display: block; }
         #searchInput { width: 100%; padding: 15px 25px; border-radius: 30px; border: none; background: #1a1a1a; color: #fff; font-family: inherit; margin-bottom: 30px; }
+        .vol-slider { -webkit-appearance: none; width: 100px; height: 4px; background: #333; border-radius: 10px; cursor: pointer; accent-color: var(--primary); direction: ltr; }
     </style>
 </head>
 <body>
@@ -159,9 +118,9 @@
 
 <aside id="sidebar">
     <div class="logo">M-CHAVOSHI</div>
-    <div class="nav-item active" onclick="showView('home')">🏠 سەرەکی</div>
-    <div class="nav-item" onclick="showView('search')">🔍 گەڕان</div>
-    <div class="nav-item" onclick="showView('favorites')">❤️ دڵخوازم</div>
+    <div class="nav-item active" id="btn-home" onclick="showView('home')">🏠 سەرەکی</div>
+    <div class="nav-item" id="btn-search" onclick="showView('search')">🔍 گەڕان</div>
+    <div class="nav-item" id="btn-favs" onclick="showView('favorites')">❤️ دڵخوازم</div>
 </aside>
 
 <main id="main">
@@ -206,9 +165,9 @@
     <div class="player-controls">
         <div class="control-btns">
             <button class="repeat-btn" id="repeatBtn" onclick="toggleRepeat()">🔁</button>
-            <button style="background:none; border:none; color:#fff; font-size:20px;" onclick="prevSong()">⏮</button>
+            <button style="background:none; border:none; color:#fff; font-size:20px; cursor:pointer;" onclick="prevSong()">⏮</button>
             <button class="play-btn" id="masterPlay" onclick="togglePlay()">▶</button>
-            <button style="background:none; border:none; color:#fff; font-size:20px;" onclick="nextSong()">⏭</button>
+            <button style="background:none; border:none; color:#fff; font-size:20px; cursor:pointer;" onclick="nextSong()">⏭</button>
         </div>
         <div class="progress-container">
             <span id="cTime">٠:٠٠</span>
@@ -216,7 +175,7 @@
             <span id="tTime">٠:٠٠</span>
         </div>
     </div>
-    <div style="text-align: left;">🔊 <input type="range" min="0" max="1" step="0.05" value="1" oninput="audio.volume=this.value" style="direction:ltr;"></div>
+    <div class="player-right" style="text-align: left;">🔊 <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="1" oninput="audio.volume=this.value"></div>
 </div>
 
 <audio id="mainAudio"></audio>
@@ -230,7 +189,7 @@ const songs = [
     { title: "ملکا", album: "Maleka", cover: "music/cover5.jpg", src: "music/5.mp3", dur: "٤:٢٦" },
     { title: "زنگ زبور", album: "Tanhaye", cover: "music/cover6.jpg", src: "music/6.mp3", dur: "٣:١٧" },
     { title: "فاصلە", album: "Faseleh", cover: "music/cover7.jpg", src: "music/7.mp3", dur: "٥:١٤" },
-    { title: "گریەهایت", album: "Khodkoshi", cover: "music/cover8.jpg", src: "music/8.mp3", dur: "٥:٣٤" },
+    { title: "برای گریەهایت", album: "Khodkoshi", cover: "music/cover8.jpg", src: "music/8.mp3", dur: "٥:٣٤" },
     { title: "ساعت دیواری", album: "Saat Divari", cover: "music/cover9.jpg", src: "music/9.mp3", dur: "٣:٣٤" },
     { title: "قاتل حرفه ای", album: "Mohsen & Hamed", cover: "music/cover10.jpg", src: "music/10.mp3", dur: "٤:٢٠" },
     { title: "سر این سفرە", album: "Goldoon", cover: "music/cover11.jpg", src: "music/11.mp3", dur: "٥:٠٥" },
@@ -307,6 +266,8 @@ function prevSong() { playIt((cur - 1 + songs.length) % songs.length); }
 function showView(v) {
     document.querySelectorAll('.view').forEach(e => e.classList.remove('active'));
     document.getElementById('view-'+v).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+    document.getElementById('btn-'+(v==='home'?'home':v==='search'?'search':'favs')).classList.add('active');
     updateUI();
 }
 
