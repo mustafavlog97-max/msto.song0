@@ -44,10 +44,7 @@
            WATERMARK
         ════════════════════════════════════ */
         .msto-watermark {
-            position: fixed; top: 14px; left: 14px;
-            font-size: 30px; font-family: 'Nizar Nastaliq Kurdish', serif;
-            z-index: 9999; pointer-events: none;
-            animation: rgb-glow 6s infinite linear;
+            display: none;
         }
         @keyframes rgb-glow {
             0%,100% { color: #ff2244; text-shadow: 0 0 12px #ff2244, 0 0 30px #ff224444; }
@@ -124,8 +121,9 @@
             border: 1px solid rgba(29,185,84,0.15);
             display: flex; justify-content: space-between; align-items: center;
             overflow: hidden;
+            min-height: 160px;
         }
-        .banner-container::before {
+        @keyframes rotate-sun { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
             content: '';
             position: absolute; inset: 0;
             background: radial-gradient(ellipse at 20% 50%, rgba(29,185,84,0.08) 0%, transparent 60%);
@@ -134,7 +132,18 @@
 
         .banner-left { display: flex; align-items: center; gap: 22px; position: relative; }
 
-        @keyframes rotate-sun { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .banner-watermark {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 52px;
+            font-family: 'Nizar Nastaliq Kurdish', serif;
+            pointer-events: none;
+            animation: rgb-glow 6s infinite linear;
+            opacity: 0.55;
+            white-space: nowrap;
+            z-index: 2;
+        }
         .sun-spin {
             width: 100px; height: 100px;
             animation: rotate-sun 14s infinite linear;
@@ -441,8 +450,6 @@
 </head>
 <body>
 
-<div class="msto-watermark">مستۆ</div>
-
 <!-- ════ SIDEBAR ════ -->
 <aside id="sidebar">
     <div class="logo">M·CHAVOSHI</div>
@@ -463,7 +470,7 @@
     <!-- HOME -->
     <div id="view-home" class="view active">
         <div class="banner-container">
-            <div class="banner-left">
+        <div class="banner-watermark">مستۆ</div>
                 <svg class="sun-spin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <!-- Core circle -->
                     <circle cx="50" cy="50" r="22" fill="#FFD700" filter="url(#glow)"/>
@@ -499,12 +506,12 @@
                 <div class="header-text">
                     <div class="label">Artist</div>
                     <h1>موحسین چاڤۆشی</h1>
-                    <div class="sub">١٩ گۆرانی · </div>
+                    <div class="sub">١٩ گۆرانی · کۆکراوەی بەرجەستە</div>
                 </div>
             </div>
             <div class="hero-img-box">
                 <img src="music/cover1.jpg" id="heroImg" alt="Cover">
-                <div class="hero-img-badge">ئیستا گوێی لی دەگری</div>
+                <div class="hero-img-badge">ئیستا گوێی لێ دەگری</div>
             </div>
         </div>
 
