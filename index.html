@@ -21,15 +21,10 @@
 
         /* 🌈 واتەرمارکی مستۆ RGB */
         .msto-watermark {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            font-size: 45px;
-            font-family: 'Nizar Nastaliq Kurdish', serif;
-            z-index: 9999;
-            animation: rgb-glow 6s infinite linear;
-            pointer-events: none;
-            filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+            position: fixed; top: 25px; left: 25px;
+            font-size: 45px; font-family: 'Nizar Nastaliq Kurdish', serif;
+            z-index: 9999; animation: rgb-glow 6s infinite linear;
+            pointer-events: none; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
         }
         @keyframes rgb-glow {
             0% { color: #ff0000; text-shadow: 0 0 15px #ff0000; }
@@ -52,7 +47,7 @@
             overflow: hidden;
         }
 
-        /* Sidebar - مێنیوی لای چەپ */
+        /* Sidebar */
         #sidebar {
             grid-area: sidebar;
             background: var(--sidebar-bg);
@@ -83,40 +78,34 @@
             background: linear-gradient(180deg, #122c1e 0%, #050505 40%);
             padding-bottom: 40px;
         }
-        .header-content {
-            padding: 80px 40px 40px;
+
+        /* ☀️ بەشی هێدەر و شریتی خۆرەکە */
+        .header-box {
+            margin: 40px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            align-items: flex-end;
-            gap: 30px;
-            position: relative; /* بۆ دیاریکردنی خۆرەکە */
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
-        .header-img {
-            width: 230px; height: 230px;
-            border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            object-fit: cover;
-        }
-        .header-text h1 { font-size: 70px; font-weight: 900; margin-bottom: 10px; }
+        .header-info-flex { display: flex; align-items: center; gap: 30px; }
+        .header-img { width: 200px; height: 200px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); object-fit: cover; }
+        .header-text h1 { font-size: 50px; font-weight: 900; }
 
-        /* 🔄 ئەنیمەیشنی سوڕانەوەی خۆرەکە */
-        .sun-icon-header {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            width: 150px; /* قەبارەی خۆرەکە */
-            height: 150px;
-            border-radius: 50%; /* بۆ بازنەیی */
-            animation: rotate-sun 10s infinite linear;
-            pointer-events: none;
-            opacity: 0.7;
+        /* خۆرە سوڕاوەکە */
+        .sun-spin {
+            width: 130px;
+            height: 130px;
+            animation: rotate-sun 12s infinite linear;
+            filter: drop-shadow(0 0 10px #ffcc00);
         }
+        @keyframes rotate-sun { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        @keyframes rotate-sun {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Song Table */
+        /* Song List */
         .song-list-container { padding: 0 40px; }
         .table-header {
             display: grid;
@@ -136,62 +125,35 @@
             transition: 0.2s;
         }
         .song-row:hover { background: var(--card-hover); }
-        .song-row.playing { color: var(--primary); }
+        .song-row.playing { color: var(--primary); background: rgba(29, 185, 84, 0.05); }
         .song-title-group { display: flex; align-items: center; gap: 15px; }
         .song-row img { width: 45px; height: 45px; border-radius: 6px; }
 
         /* Player Bar */
         #player {
             grid-area: player;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
+            background: #000;
             border-top: 1px solid rgba(255,255,255,0.1);
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
             padding: 0 30px;
             align-items: center;
         }
-        .player-info { display: flex; align-items: center; gap: 15px; }
         .player-controls { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .control-btns { display: flex; align-items: center; gap: 25px; }
-        .play-btn { 
-            width: 45px; height: 45px; background: #fff; border: none; 
-            border-radius: 50%; font-size: 20px; cursor: pointer;
-            transition: 0.2s;
-        }
+        .play-btn { width: 45px; height: 45px; background: #fff; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; transition: 0.2s; }
         .play-btn:hover { transform: scale(1.1); }
         .progress-container { width: 100%; display: flex; align-items: center; gap: 10px; direction: ltr; }
-        .progress-bar { flex: 1; height: 5px; background: #333; border-radius: 10px; cursor: pointer; position: relative; }
-        .progress-fill { height: 100%; background: var(--primary); width: 0%; border-radius: 10px; transition: width 0.1s linear; }
-
-        @media (max-width: 768px) {
-            body {
-                grid-template-areas: "main" "player" "sidebar";
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 90px 70px;
-            }
-            #sidebar {
-                grid-area: sidebar;
-                flex-direction: row; padding: 0;
-                justify-content: space-around; align-items: center;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-            .logo { display: none; }
-            .nav-item { flex-direction: column; font-size: 11px; padding: 10px; gap: 5px; }
-            .header-content { flex-direction: column; align-items: center; text-align: center; padding: 40px 20px; }
-            .header-img { width: 160px; height: 160px; }
-            .header-text h1 { font-size: 32px; }
-            .sun-icon-header { top: 10px; right: 20px; width: 80px; height: 80px; }
-            .table-header, .song-album { display: none; }
-            .song-row { grid-template-columns: 30px 1fr 80px 40px; padding: 10px; }
-            #player { grid-template-columns: 1fr 1fr; }
-            .player-right { display: none; }
-            .msto-watermark { font-size: 30px; top: 15px; left: 15px; }
-        }
+        .progress-bar { flex: 1; height: 5px; background: #333; border-radius: 10px; cursor: pointer; }
+        .progress-fill { height: 100%; background: var(--primary); width: 0%; border-radius: 10px; }
 
         .view { display: none; }
         .view.active { display: block; }
-        .vol-slider { -webkit-appearance: none; width: 100px; height: 4px; background: #333; border-radius: 10px; cursor: pointer; accent-color: var(--primary); direction: ltr; }
+        
+        #searchInput {
+            width: 100%; padding: 15px 25px; border-radius: 30px; border: none;
+            background: #1a1a1a; color: #fff; font-family: inherit; margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
@@ -207,14 +169,16 @@
 
 <main id="main">
     <div id="view-home" class="view active">
-        <div class="header-content">
-            <img src="image_5.png" class="sun-icon-header" alt="Kurdistan Sun">
-            <img src="music/cover1.jpg" id="heroImg" class="header-img">
-            <div class="header-text">
-                <p style="text-transform: uppercase; font-size: 12px; font-weight: 900;">Artist</p>
-                <h1>موحسین چاڤۆشی</h1>
-                <p id="totalSongsLabel" style="color: var(--text-gray);">٠ گۆرانی</p>
+        <div class="header-box">
+            <div class="header-info-flex">
+                <img src="music/cover1.jpg" id="heroImg" class="header-img">
+                <div class="header-text">
+                    <p style="color: var(--primary); font-weight: 900;">هونەرمەند</p>
+                    <h1>موحسین چاڤۆشی</h1>
+                    <p id="totalSongsLabel" style="color: var(--text-gray);"></p>
+                </div>
             </div>
+            <img src="unnamed-removebg-preview.png" class="sun-spin" alt="Sun">
         </div>
         <div class="song-list-container">
             <div class="table-header"><span>#</span><span>ناونیشان</span><span>ئەلبوم</span><span>ماوە</span><span></span></div>
@@ -223,14 +187,14 @@
     </div>
 
     <div id="view-search" class="view" style="padding: 40px;">
-        <h2 style="margin-bottom: 20px;">گەڕان</h2>
-        <input type="text" id="searchInput" placeholder="چی دەبیستیت؟" style="width: 100%; padding: 15px 25px; border-radius: 30px; border: none; background: var(--card-hover); color: #fff; font-family: inherit;" oninput="searchMusic(this.value)">
-        <div id="searchList" style="margin-top: 20px;"></div>
+        <h2>گەڕان</h2>
+        <input type="text" id="searchInput" placeholder="چی دەبیستیت؟" oninput="searchMusic(this.value)">
+        <div id="searchList"></div>
     </div>
 
     <div id="view-favorites" class="view" style="padding: 40px;">
-        <h2 style="margin-bottom: 20px;">❤️ دڵخوازم</h2>
-        <div id="favoritesList"></div>
+        <h2>❤️ دڵخوازم</h2>
+        <div id="favoritesList" style="margin-top: 20px;"></div>
     </div>
 </main>
 
@@ -242,7 +206,6 @@
             <div style="font-size: 12px; color: var(--text-gray);">موحسین چاڤۆشی</div>
         </div>
     </div>
-
     <div class="player-controls">
         <div class="control-btns">
             <button style="background:none; border:none; color:#fff; font-size:20px; cursor:pointer;" onclick="prevSong()">⏮</button>
@@ -250,16 +213,12 @@
             <button style="background:none; border:none; color:#fff; font-size:20px; cursor:pointer;" onclick="nextSong()">⏭</button>
         </div>
         <div class="progress-container">
-            <span id="cTime" style="font-size: 11px;">٠:٠٠</span>
-            <div class="progress-bar" id="pBar" onclick="seek(event)"><div class="progress-fill" id="pFill"></div></div>
-            <span id="tTime" style="font-size: 11px;">٠:٠٠</span>
+            <span id="cTime">٠:٠٠</span>
+            <div class="progress-bar" onclick="seek(event)"><div class="progress-fill" id="pFill"></div></div>
+            <span id="tTime">٠:٠٠</span>
         </div>
     </div>
-
-    <div class="player-right" style="display: flex; align-items: center; gap: 10px; justify-content: flex-end;">
-        <span>🔊</span>
-        <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="1" oninput="changeVol(this.value)">
-    </div>
+    <div style="text-align: left;">🔊 <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="1" oninput="audio.volume=this.value"></div>
 </div>
 
 <audio id="mainAudio"></audio>
@@ -273,18 +232,18 @@ const songs = [
     { title: "ملکا", album: "Maleka", cover: "music/cover5.jpg", src: "music/5.mp3", dur: "٤:٢٦" },
     { title: "زنگ زبور", album: "Tanhaye", cover: "music/cover6.jpg", src: "music/6.mp3", dur: "٣:١٧" },
     { title: "فاصلە", album: "Faseleh", cover: "music/cover7.jpg", src: "music/7.mp3", dur: "٥:١٤" },
-    { title: "گریەهایت", album: "Khodkoshi Mamnoo", cover: "music/cover8.jpg", src: "music/8.mp3", dur: "٥:٣٤" },
+    { title: "برای گریەهایت", album: "Khodkoshi", cover: "music/cover8.jpg", src: "music/8.mp3", dur: "٥:٣٤" },
     { title: "ساعت دیواری", album: "Saat Divari", cover: "music/cover9.jpg", src: "music/9.mp3", dur: "٣:٣٤" },
     { title: "قاتل حرفه ای", album: "Mohsen & Hamed", cover: "music/cover10.jpg", src: "music/10.mp3", dur: "٤:٢٠" },
     { title: "سر این سفرە", album: "Goldoon", cover: "music/cover11.jpg", src: "music/11.mp3", dur: "٥:٠٥" },
-    { title: "ماه خورشید منی", album: "Gandom Goon", cover: "music/cover12.jpg", src: "music/12.mp3", dur: "٤:١٢" },
+    { title: "ماه خورشید منی", album: "Gandom", cover: "music/cover12.jpg", src: "music/12.mp3", dur: "٤:١٢" },
     { title: "زندانبان", album: "Zendanban", cover: "music/cover13.jpg", src: "music/13.mp3", dur: "٣:٥٧" },
     { title: "پناه", album: "Panah", cover: "music/cover14.jpg", src: "music/14.mp3", dur: "٤:٢٣" },
     { title: "باب دلمی", album: "Babe Delami", cover: "music/cover15.jpg", src: "music/15.mp3", dur: "٣:١٦" },
     { title: "بە رسمی", album: "Yadegar", cover: "music/cover16.jpg", src: "music/16.mp3", dur: "٥:٣١" },
     { title: "برقصا", album: "Beraghsa", cover: "music/cover17.jpg", src: "music/17.mp3", dur: "٤:١٥" },
-    { title: "همین مونده بود", album: "Hamin Moonde bood", cover: "music/cover18.jpg", src: "music/18.mp3", dur: "٣:٥٧" },
-    { title: "کجا بودی", album: "Koja Boodi", cover: "music/cover19.jpg", src: "music/19.mp3", dur: "٣:٣٣" }
+    { title: "همین مونده بود", album: "Single", cover: "music/cover18.jpg", src: "music/18.mp3", dur: "٣:٢٠" },
+    { title: "کجا بودی", album: "Single", cover: "music/cover19.jpg", src: "music/19.mp3", dur: "٣:٤٥" }
 ];
 
 let cur = -1;
@@ -293,31 +252,25 @@ const audio = document.getElementById('mainAudio');
 
 function formatTime(sec) {
     if(!sec) return '٠:٠٠';
-    let m = Math.floor(sec / 60);
-    let s = Math.floor(sec % 60);
+    let m = Math.floor(sec / 60), s = Math.floor(sec % 60);
     const map = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
-    let time = m + ":" + (s < 10 ? "0" + s : s);
-    return time.replace(/[0-9]/g, d => map[d]);
+    return (m + ":" + (s < 10 ? "0" + s : s)).replace(/[0-9]/g, d => map[d]);
 }
 
-function renderSongs(list, id) {
-    const el = document.getElementById(id);
-    if(!el) return; el.innerHTML = '';
-    list.forEach((s, i) => {
-        const idx = songs.indexOf(s);
-        const row = document.createElement('div');
-        row.className = `song-row ${idx === cur ? 'playing' : ''}`;
-        row.innerHTML = `
-            <span>${formatTime(i+1).replace(':','')}</span>
-            <div class="song-title-group" onclick="playIt(${idx})">
-                <img src="${s.cover}"> <div>${s.title}</div>
-            </div>
-            <div class="song-album">${s.album}</div>
-            <div>${s.dur}</div>
-            <div onclick="toggleFav(event, ${idx})">${favs.includes(idx) ? '❤️' : '🤍'}</div>
-        `;
-        el.appendChild(row);
-    });
+function createRow(s, i, containerId) {
+    const realIdx = songs.indexOf(s);
+    const div = document.createElement('div');
+    div.className = `song-row ${realIdx === cur ? 'playing' : ''}`;
+    div.innerHTML = `
+        <span>${i+1}</span>
+        <div class="song-title-group" onclick="playIt(${realIdx})">
+            <img src="${s.cover}"> <div>${s.title}</div>
+        </div>
+        <div>${s.album}</div>
+        <div>${s.dur}</div>
+        <div onclick="toggleFav(event, ${realIdx})">${favs.includes(realIdx) ? '❤️' : '🤍'}</div>
+    `;
+    document.getElementById(containerId).appendChild(div);
 }
 
 function playIt(i) {
@@ -326,19 +279,17 @@ function playIt(i) {
     document.getElementById('pTitle').innerText = songs[i].title;
     document.getElementById('pThumb').src = songs[i].cover;
     document.getElementById('heroImg').src = songs[i].cover;
-    updateAll();
+    updateUI();
 }
 
 function togglePlay() {
     if(cur === -1) return playIt(0);
-    if(audio.paused) { audio.play(); document.getElementById('masterPlay').innerText = '⏸'; }
-    else { audio.pause(); document.getElementById('masterPlay').innerText = '▶'; }
+    audio.paused ? (audio.play(), document.getElementById('masterPlay').innerText='⏸') : (audio.pause(), document.getElementById('masterPlay').innerText='▶');
 }
 
 function seek(e) {
-    const r = document.getElementById('pBar').getBoundingClientRect();
-    const pct = (e.clientX - r.left) / r.width;
-    audio.currentTime = pct * audio.duration;
+    const r = e.currentTarget.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
 }
 
 audio.ontimeupdate = () => {
@@ -349,7 +300,6 @@ audio.ontimeupdate = () => {
     }
 };
 
-function changeVol(v) { audio.volume = v; }
 function nextSong() { playIt((cur + 1) % songs.length); }
 function prevSong() { playIt((cur - 1 + songs.length) % songs.length); }
 
@@ -358,25 +308,30 @@ function showView(v) {
     document.getElementById('view-'+v).classList.add('active');
     document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
     document.getElementById('btn-'+(v==='home'?'home':v==='search'?'search':'favs')).classList.add('active');
-    if(v === 'favorites') renderSongs(songs.filter((_,i)=>favs.includes(i)), 'favoritesList');
+    updateUI();
 }
 
 function toggleFav(e, i) {
     e.stopPropagation();
-    if(favs.includes(i)) favs = favs.filter(x => x !== i); else favs.push(i);
+    favs.includes(i) ? favs = favs.filter(x => x !== i) : favs.push(i);
     localStorage.setItem('m_favs', JSON.stringify(favs));
-    updateAll();
+    updateUI();
 }
 
-function searchMusic(q) { renderSongs(songs.filter(s => s.title.includes(q)), 'searchList'); }
-
-function updateAll() {
-    renderSongs(songs, 'fullSongList');
-    if(document.getElementById('view-favorites').classList.contains('active')) renderSongs(songs.filter((_,i)=>favs.includes(i)), 'favoritesList');
+function searchMusic(q) {
+    document.getElementById('searchList').innerHTML = '';
+    songs.filter(s => s.title.includes(q)).forEach((s, i) => createRow(s, i, 'searchList'));
 }
 
-document.getElementById('totalSongsLabel').innerText = formatTime(songs.length).replace(':','') + ' گۆرانی';
-updateAll();
+function updateUI() {
+    document.getElementById('fullSongList').innerHTML = '';
+    songs.forEach((s, i) => createRow(s, i, 'fullSongList'));
+    document.getElementById('favoritesList').innerHTML = '';
+    songs.filter((_, i) => favs.includes(i)).forEach((s, i) => createRow(s, i, 'favoritesList'));
+}
+
+document.getElementById('totalSongsLabel').innerText = songs.length + " گۆرانی بڵاوکراوە";
+updateUI();
 </script>
 </body>
 </html>
