@@ -133,16 +133,14 @@
         .banner-left { display: flex; align-items: center; gap: 22px; position: relative; }
 
         .banner-watermark {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 52px;
+            font-size: 20px;
             font-family: 'Nizar Nastaliq Kurdish', serif;
             pointer-events: none;
             animation: rgb-glow 6s infinite linear;
-            opacity: 0.55;
+            opacity: 0.9;
             white-space: nowrap;
-            z-index: 2;
+            display: inline-block;
+            margin-top: 6px;
         }
         .sun-spin {
             width: 100px; height: 100px;
@@ -432,19 +430,25 @@
             .nav-item.active { background: var(--green-dim); color: var(--green); }
             .nav-icon { font-size: 18px; }
 
-            .banner-container { margin: 12px 12px 0; padding: 20px; flex-direction: column; text-align: center; gap: 16px; }
-            .banner-left { flex-direction: column; }
-            .sun-spin { width: 80px; height: 80px; }
+            .banner-container { margin: 10px 10px 0; padding: 18px 16px; flex-direction: column; text-align: center; gap: 12px; min-height: unset; }
+            .banner-left { flex-direction: column; align-items: center; gap: 10px; }
+            .banner-watermark { font-size: 32px; }
+            .sun-spin { width: 72px; height: 72px; }
+            .header-text h1 { font-size: 26px; }
+            .hero-img-box img { width: 90px; height: 90px; }
 
-            .table-header, .song-album-cell { display: none; }
-            .song-row { grid-template-columns: 36px 1fr 44px; }
+            .table-header, .song-album-cell, .song-dur-cell { display: none; }
+            .song-row { grid-template-columns: 36px 1fr 40px; padding: 8px 10px; }
 
-            .song-list-container { padding: 16px 12px; }
-            .search-wrapper, .favs-wrapper { padding: 16px 12px; }
+            .song-list-container { padding: 14px 10px; }
+            .search-wrapper, .favs-wrapper { padding: 14px 10px; }
 
-            #player { grid-template-columns: 1fr 1fr; padding: 0 14px; }
+            #player { grid-template-columns: 1fr auto; padding: 0 12px; }
             .player-right { display: none; }
-            .msto-watermark { font-size: 22px; top: 10px; left: 10px; }
+            #pThumb { width: 40px; height: 40px; }
+            .play-btn { width: 36px; height: 36px; font-size: 14px; }
+            .ctrl-btn { font-size: 15px; }
+            .control-btns { gap: 10px; }
         }
     </style>
 </head>
@@ -470,13 +474,21 @@
     <!-- HOME -->
     <div id="view-home" class="view active">
         <div class="banner-container">
-        <div class="banner-watermark">مستۆ</div>
+            <div class="hero-img-box">
+                <img src="music/cover1.jpg" id="heroImg" alt="Cover">
+                <div class="hero-img-badge">NOW PLAYING</div>
+            </div>
+            <div class="banner-left">
+                <div class="header-text">
+                    <div class="label">Artist</div>
+                    <h1>موحسین چاڤۆشی</h1>
+                    <div class="banner-watermark">مستۆ</div>
+                    <div class="sub">١٩ گۆرانی · کۆکراوەی بەرجەستە</div>
+                </div>
                 <svg class="sun-spin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Core circle -->
                     <circle cx="50" cy="50" r="22" fill="#FFD700" filter="url(#glow)"/>
                     <circle cx="50" cy="50" r="18" fill="#FFA500"/>
                     <circle cx="50" cy="50" r="13" fill="#FFD700"/>
-                    <!-- Rays -->
                     <g stroke="#FFD700" stroke-linecap="round">
                         <line x1="50" y1="5"  x2="50" y2="18" stroke-width="4"/>
                         <line x1="50" y1="82" x2="50" y2="95" stroke-width="4"/>
@@ -486,7 +498,6 @@
                         <line x1="73" y1="73" x2="82" y2="82" stroke-width="3.5"/>
                         <line x1="82" y1="18" x2="73" y2="27" stroke-width="3.5"/>
                         <line x1="18" y1="82" x2="27" y2="73" stroke-width="3.5"/>
-                        <!-- Short rays -->
                         <line x1="30" y1="7"  x2="33" y2="17" stroke-width="2.5"/>
                         <line x1="70" y1="7"  x2="67" y2="17" stroke-width="2.5"/>
                         <line x1="30" y1="93" x2="33" y2="83" stroke-width="2.5"/>
@@ -503,15 +514,6 @@
                         </filter>
                     </defs>
                 </svg>
-                <div class="header-text">
-                    <div class="label">Artist</div>
-                    <h1>موحسین چاڤۆشی</h1>
-                    <div class="sub">١٩ گۆرانی · کۆکراوەی بەرجەستە</div>
-                </div>
-            </div>
-            <div class="hero-img-box">
-                <img src="music/cover1.jpg" id="heroImg" alt="Cover">
-                <div class="hero-img-badge">ئیستا گوێی لێ دەگری</div>
             </div>
         </div>
 
@@ -746,4 +748,3 @@ updateUI();
 </script>
 </body>
 </html>
-
