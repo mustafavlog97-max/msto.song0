@@ -53,7 +53,9 @@
             pointer-events: none; z-index: 0;
         }
 
-        /* ════ SIDEBAR ════ */
+        /* ════════════════════════════════════
+           SIDEBAR
+        ════════════════════════════════════ */
         #sidebar {
             grid-area: sidebar;
             background: var(--glass);
@@ -85,9 +87,11 @@
             font-weight: 500; font-size: 13px;
             transition: all 0.2s;
             position: relative;
-            text-decoration: none;
         }
-        .nav-item:hover { background: var(--surface2); color: var(--text); }
+        .nav-item:hover {
+            background: var(--surface2);
+            color: var(--text);
+        }
         .nav-item.active {
             background: var(--accent-dim);
             color: var(--text);
@@ -108,7 +112,9 @@
             margin: 8px 12px;
         }
 
-        /* ════ MAIN ════ */
+        /* ════════════════════════════════════
+           MAIN
+        ════════════════════════════════════ */
         #main {
             grid-area: main;
             overflow-y: auto;
@@ -119,11 +125,9 @@
         #main::-webkit-scrollbar-track { background: transparent; }
         #main::-webkit-scrollbar-thumb { background: rgba(168,85,247,0.3); border-radius: 3px; }
 
-        /* ════ VIEWS ════ */
-        .view { display: none; }
-        .view.active { display: block; }
-
-        /* ════ MUSIC VIEWS ════ */
+        /* ════════════════════════════════════
+           HERO BANNER
+        ════════════════════════════════════ */
         .banner-container {
             position: relative;
             margin: 20px 20px 0;
@@ -153,7 +157,10 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
         }
 
-        .banner-sun-wrap { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .banner-sun-wrap {
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
 
         .banner-center {
             display: flex; align-items: center; gap: 20px;
@@ -171,17 +178,17 @@
             border: 2px solid #a855f7;
             animation: pulse-ring 3s ease-in-out infinite;
         }
-        .deco-ring2 { inset: 12px; border-color: #6366f1; animation-delay: 1.5s; }
+        .deco-ring2 {
+            inset: 12px;
+            border-color: #6366f1;
+            animation-delay: 1.5s;
+        }
         @keyframes pulse-ring {
             0%, 100% { transform: scale(1); opacity: 0.5; }
             50% { transform: scale(1.08); opacity: 1; }
         }
+
         @keyframes rotate-sun { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes rgb-glow {
-            0%,100% { color: #ff2244; text-shadow: 0 0 12px #ff2244, 0 0 30px #ff224444; }
-            33%      { color: #cc44ff; text-shadow: 0 0 12px #cc44ff, 0 0 30px #cc44ff44; }
-            66%      { color: #4488ff; text-shadow: 0 0 12px #4488ff, 0 0 30px #4488ff44; }
-        }
 
         .banner-watermark {
             font-size: 20px;
@@ -192,6 +199,12 @@
             white-space: nowrap;
             display: inline-block;
             margin-top: 6px;
+        }
+
+        @keyframes rgb-glow {
+            0%,100% { color: #ff2244; text-shadow: 0 0 12px #ff2244, 0 0 30px #ff224444; }
+            33%      { color: #cc44ff; text-shadow: 0 0 12px #cc44ff, 0 0 30px #cc44ff44; }
+            66%      { color: #4488ff; text-shadow: 0 0 12px #4488ff, 0 0 30px #4488ff44; }
         }
 
         .sun-spin {
@@ -214,33 +227,41 @@
             background: linear-gradient(135deg, #ffffff 0%, #d4b8ff 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .header-text .sub { font-size: 12px; color: var(--text-dim); margin-top: 8px; }
+        .header-text .sub {
+            font-size: 12px; color: var(--text-dim); margin-top: 8px;
+        }
 
         .hero-img-box { position: relative; flex-shrink: 0; z-index: 1; }
         .hero-img-box img {
             width: 110px; height: 110px;
-            border-radius: 18px; object-fit: cover;
+            border-radius: 18px;
+            object-fit: cover;
             box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.15);
             display: block;
         }
         .hero-img-badge {
             position: absolute; bottom: -8px; right: -8px;
             background: linear-gradient(135deg, #a855f7, #6366f1);
-            color: #fff; font-size: 9px; font-weight: 900;
+            color: #fff;
+            font-size: 9px; font-weight: 900;
             letter-spacing: 0.12em; text-transform: uppercase;
             padding: 4px 8px; border-radius: 6px;
             box-shadow: 0 4px 12px rgba(168,85,247,0.5);
         }
 
-        /* ════ SONG LIST ════ */
+        /* ════════════════════════════════════
+           SONG LIST
+        ════════════════════════════════════ */
         .song-list-container { padding: 24px 20px 20px; }
         .section-title {
             font-size: 16px; font-weight: 800;
             margin-bottom: 16px;
             display: flex; align-items: center; gap: 10px;
+            color: var(--text);
         }
         .section-title::after {
-            content: ''; flex: 1; height: 1px;
+            content: ''; flex: 1;
+            height: 1px;
             background: linear-gradient(90deg, rgba(168,85,247,0.3), transparent);
         }
 
@@ -266,45 +287,82 @@
             margin-bottom: 2px;
             border: 1px solid transparent;
         }
-        .song-row:hover { background: var(--glass); backdrop-filter: blur(10px); border-color: var(--glass-border); }
-        .song-row.playing { background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.25); backdrop-filter: blur(10px); }
+        .song-row:hover {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-color: var(--glass-border);
+        }
+        .song-row.playing {
+            background: rgba(168,85,247,0.1);
+            border-color: rgba(168,85,247,0.25);
+            backdrop-filter: blur(10px);
+        }
         .song-row.playing .song-num,
         .song-row.playing .song-name { color: #c084fc; }
-        .song-num { color: var(--text-muted); font-size: 13px; font-weight: 600; text-align: center; }
+
+        .song-num {
+            color: var(--text-muted); font-size: 13px;
+            font-weight: 600; text-align: center;
+        }
         .song-row.playing .song-num::before { content: '♪ '; }
 
-        .song-title-group { display: flex; align-items: center; gap: 12px; overflow: hidden; }
+        .song-title-group {
+            display: flex; align-items: center; gap: 12px;
+            overflow: hidden;
+        }
         .song-title-group img {
-            width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+            width: 42px; height: 42px;
+            border-radius: 10px; flex-shrink: 0;
             object-fit: cover;
             box-shadow: 0 2px 10px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .song-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .song-name {
+            font-size: 14px; font-weight: 500;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
         .song-album-cell { font-size: 12px; color: var(--text-dim); }
         .song-dur-cell { font-size: 12px; color: var(--text-dim); }
         .fav-btn {
-            background: none; border: none; cursor: pointer; font-size: 15px;
-            opacity: 0.4; transition: opacity 0.15s, transform 0.15s; text-align: center;
+            background: none; border: none;
+            cursor: pointer; font-size: 15px;
+            opacity: 0.4; transition: opacity 0.15s, transform 0.15s;
+            text-align: center;
         }
         .fav-btn:hover { opacity: 1; transform: scale(1.25); }
         .fav-btn.active { opacity: 1; }
 
-        /* ════ SEARCH ════ */
+        /* ════════════════════════════════════
+           SEARCH
+        ════════════════════════════════════ */
         .search-wrapper { padding: 28px 24px; }
         .search-box { position: relative; margin-bottom: 24px; }
         .search-box input {
             width: 100%; padding: 14px 20px 14px 48px;
-            border-radius: 14px; border: 1px solid var(--glass-border);
-            background: var(--glass); backdrop-filter: blur(20px);
-            color: var(--text); font-family: inherit; font-size: 14px;
-            outline: none; transition: border-color 0.2s, box-shadow 0.2s; direction: rtl;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            color: var(--text);
+            font-family: inherit; font-size: 14px;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+            direction: rtl;
         }
-        .search-box input:focus { border-color: rgba(168,85,247,0.5); box-shadow: 0 0 0 3px rgba(168,85,247,0.1); }
+        .search-box input:focus {
+            border-color: rgba(168,85,247,0.5);
+            box-shadow: 0 0 0 3px rgba(168,85,247,0.1);
+        }
         .search-box input::placeholder { color: var(--text-muted); }
-        .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-dim); font-size: 16px; pointer-events: none; }
+        .search-icon {
+            position: absolute; left: 16px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim); font-size: 16px;
+            pointer-events: none;
+        }
 
-        /* ════ FAVORITES ════ */
+        /* ════════════════════════════════════
+           FAVORITES
+        ════════════════════════════════════ */
         .favs-wrapper { padding: 28px 24px; }
         .favs-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
         .favs-header h2 { font-size: 22px; font-weight: 800; }
@@ -318,11 +376,13 @@
         .empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.3; }
         .empty-state p { font-size: 14px; }
 
-        /* ════ EXTRA PAGES ════ */
-        .page-wrap {
-            padding: 36px 28px 60px;
-            max-width: 800px;
-        }
+        /* ════════════════════════════════════
+           EXTRA PAGES
+        ════════════════════════════════════ */
+        .view { display: none; }
+        .view.active { display: block; }
+
+        .page-wrap { padding: 36px 28px 60px; max-width: 800px; }
         .page-hero { margin-bottom: 32px; }
         .page-tag {
             display: inline-block;
@@ -339,18 +399,9 @@
         }
         .page-hero p { font-size: 14px; color: var(--text-dim); line-height: 1.9; max-width: 520px; }
         .page-hero .date { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+        .page-divider { height: 1px; margin: 28px 0; background: linear-gradient(90deg, rgba(168,85,247,0.4), transparent); }
 
-        .page-divider {
-            height: 1px; margin: 28px 0;
-            background: linear-gradient(90deg, rgba(168,85,247,0.4), transparent);
-        }
-
-        /* About cards */
-        .about-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px; margin-bottom: 28px;
-        }
+        .about-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
         .about-card {
             background: var(--glass); backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border); border-radius: 18px;
@@ -362,11 +413,9 @@
         .about-card p { font-size: 13px; color: var(--text-dim); line-height: 1.8; }
 
         .stats-box {
-            background: rgba(168,85,247,0.06);
-            border: 1px solid rgba(168,85,247,0.2);
+            background: rgba(168,85,247,0.06); border: 1px solid rgba(168,85,247,0.2);
             border-radius: 20px; padding: 28px;
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 20px; text-align: center;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;
         }
         .stat-num {
             font-size: 32px; font-weight: 900;
@@ -376,11 +425,7 @@
         }
         .stat-label { font-size: 12px; color: var(--text-dim); }
 
-        /* Contact */
-        .contact-grid {
-            display: grid; grid-template-columns: 1fr 1.4fr;
-            gap: 20px; align-items: start;
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; align-items: start; }
         .contact-info-list { display: flex; flex-direction: column; gap: 12px; }
         .info-card {
             background: var(--glass); backdrop-filter: blur(20px);
@@ -427,13 +472,13 @@
         }
         .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(168,85,247,0.6); }
         .submit-btn:active { transform: scale(0.98); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .success-msg {
             display: none; text-align: center; padding: 12px; border-radius: 10px;
             background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.3);
             color: #c084fc; font-size: 13px; font-weight: 600; margin-top: 10px;
         }
 
-        /* Privacy */
         .prv-list { display: flex; flex-direction: column; gap: 12px; }
         .prv-card {
             background: var(--glass); backdrop-filter: blur(20px);
@@ -462,7 +507,9 @@
         .contact-link { color: #c084fc; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(168,85,247,0.3); }
         .contact-link:hover { border-color: #c084fc; }
 
-        /* ════ PLAYER ════ */
+        /* ════════════════════════════════════
+           PLAYER
+        ════════════════════════════════════ */
         #player {
             grid-area: player;
             background: rgba(15,10,30,0.85);
@@ -507,7 +554,8 @@
         .play-btn {
             width: 42px; height: 42px;
             background: linear-gradient(135deg, #a855f7, #6366f1);
-            border: none; border-radius: 50%; font-size: 16px; cursor: pointer;
+            border: none; border-radius: 50%;
+            font-size: 16px; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: transform 0.1s, box-shadow 0.15s;
             flex-shrink: 0; color: #fff;
@@ -533,7 +581,9 @@
         .vol-icon { font-size: 14px; color: var(--text-dim); }
         input[type=range] { width: 80px; accent-color: #a855f7; height: 4px; }
 
-        /* ════ MOBILE ════ */
+        /* ════════════════════════════════════
+           MOBILE
+        ════════════════════════════════════ */
         @media (max-width: 768px) {
             body {
                 grid-template-areas: "main" "player" "sidebar";
@@ -541,9 +591,12 @@
                 grid-template-rows: 1fr var(--player-h) 62px;
             }
             #sidebar {
+                grid-area: sidebar;
                 flex-direction: row; padding: 0 8px;
-                justify-content: space-around; align-items: center;
-                border-top: 1px solid var(--glass-border-bright); border-left: none;
+                justify-content: space-around;
+                align-items: center;
+                border-top: 1px solid var(--glass-border-bright);
+                border-left: none;
             }
             .logo { display: none; }
             .nav-divider { display: none; }
@@ -592,7 +645,6 @@
 <!-- ════ SIDEBAR ════ -->
 <aside id="sidebar">
     <div class="logo">M·CHAVOSHI</div>
-
     <div class="nav-item active" onclick="showView('home')">
         <span class="nav-icon">⊞</span> سەرەکی
     </div>
@@ -602,9 +654,7 @@
     <div class="nav-item" onclick="showView('favorites')">
         <span class="nav-icon">♡</span> دڵخوازم
     </div>
-
     <div class="nav-divider"></div>
-
     <div class="nav-item" onclick="showView('about')">
         <span class="nav-icon">ℹ</span> دەربارەمان
     </div>
@@ -761,21 +811,21 @@
             <div class="contact-grid">
                 <div class="contact-info-list">
                     <div class="info-card">
-                        <div class="info-icon">📧</div>
+                        <div class="info-icon">📱</div>
                         <div>
                             <div class="info-title">ژمارە مۆبایل</div>
                             <div class="info-val">07853207471</div>
                         </div>
                     </div>
                     <div class="info-card">
-                        <div class="info-icon">📱</div>
+                        <div class="info-icon">✈️</div>
                         <div>
                             <div class="info-title">تێلەگرام</div>
                             <div class="info-val">@Msto_ChaVoshi</div>
                         </div>
                     </div>
                     <div class="info-card">
-                        <div class="info-icon">🌐</div>
+                        <div class="info-icon">👻</div>
                         <div>
                             <div class="info-title">سناپ</div>
                             <div class="info-val">@msto_vampire</div>
@@ -807,7 +857,7 @@
                         <label>پەیام</label>
                         <textarea rows="4" id="f-msg" placeholder="پەیامەکەت لێرە بنووسە..."></textarea>
                     </div>
-                    <button class="submit-btn" onclick="sendMsg()">ناردنی پەیام ✉</button>
+                    <button class="submit-btn" id="sendBtn" onclick="sendMsg()">ناردنی پەیام ✉</button>
                     <div class="success-msg" id="successMsg">✓ پەیامەکەت گەیشت! زوو وەڵامت دەدەینەوە.</div>
                 </div>
             </div>
@@ -977,8 +1027,13 @@ function playIt(i) {
 
 function togglePlay() {
     if (cur === -1) return playIt(0);
-    if (audio.paused) { audio.play(); document.getElementById('masterPlay').textContent = '⏸'; }
-    else { audio.pause(); document.getElementById('masterPlay').textContent = '▶'; }
+    if (audio.paused) {
+        audio.play();
+        document.getElementById('masterPlay').textContent = '⏸';
+    } else {
+        audio.pause();
+        document.getElementById('masterPlay').textContent = '▶';
+    }
 }
 
 function toggleRepeat() {
@@ -1028,14 +1083,48 @@ function searchMusic(q) {
          .forEach((s, i) => createRow(s, i, 'searchList'));
 }
 
-function sendMsg() {
-    const fields = ['f-name','f-email','f-subject','f-msg'];
-    let ok = true;
-    fields.forEach(id => { if (!document.getElementById(id).value.trim()) ok = false; });
-    if (!ok) { alert('تکایە هەموو خانەکان پڕبکەرەوە'); return; }
-    document.getElementById('successMsg').style.display = 'block';
-    fields.forEach(id => document.getElementById(id).value = '');
-    setTimeout(() => document.getElementById('successMsg').style.display = 'none', 4000);
+async function sendMsg() {
+    const name    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const subject = document.getElementById('f-subject').value.trim();
+    const msg     = document.getElementById('f-msg').value.trim();
+
+    if (!name || !email || !subject || !msg) {
+        alert('تکایە هەموو خانەکان پڕبکەرەوە');
+        return;
+    }
+
+    const TOKEN   = '8399501231:AAEyATdkF38T-JJ9fW8PTOydB7A1Ooud_Jw';
+    const CHAT_ID = '6012594959';
+    const text    = '📩 پەیامی نوێ لە ماڵپەڕ\n\n👤 ناو: ' + name + '\n📧 ئیمەیڵ: ' + email + '\n📌 بابەت: ' + subject + '\n💬 پەیام:\n' + msg;
+
+    const btn = document.getElementById('sendBtn');
+    btn.disabled = true;
+    btn.textContent = '...دەنێرێت';
+
+    try {
+        const res  = await fetch('https://api.telegram.org/bot' + TOKEN + '/sendMessage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+        });
+        const data = await res.json();
+        if (data.ok) {
+            document.getElementById('successMsg').style.display = 'block';
+            document.getElementById('f-name').value    = '';
+            document.getElementById('f-email').value   = '';
+            document.getElementById('f-subject').value = '';
+            document.getElementById('f-msg').value     = '';
+            setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 4000);
+        } else {
+            alert('کێشەیەک ڕووی دا، دووبارە هەوڵ بدەوە');
+        }
+    } catch(e) {
+        alert('پەیوەندی سەرکەوتوو نەبوو، ئینتەرنێتەکەت بپشکنە');
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'ناردنی پەیام ✉';
 }
 
 function updateUI() {
