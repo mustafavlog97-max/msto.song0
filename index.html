@@ -1136,9 +1136,48 @@ function updateUI() {
 }
 
 updateUI();
+
+// ════ DOWNLOAD ════
+function addDownloadBtn(row, song) {
+    const btn = document.createElement('a');
+    btn.href = song.src;
+    btn.download = song.title + '.mp3';
+    btn.innerHTML = '⬇';
+    btn.title = 'داونڵۆد';
+    btn.style.cssText = `
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        opacity: 0.4;
+        transition: opacity 0.15s, transform 0.15s;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+    btn.onmouseover = () => { btn.style.opacity = '1'; btn.style.transform = 'scale(1.25)'; };
+    btn.onmouseout  = () => { btn.style.opacity = '0.4'; btn.style.transform = 'scale(1)'; };
+    row.appendChild(btn);
+}
+
+const _origCreateRow = createRow;
+createRow = function(s, i, containerId) {
+    _origCreateRow(s, i, containerId);
+    const container = document.getElementById(containerId);
+    const lastRow = container.lastElementChild;
+    if (lastRow) addDownloadBtn(lastRow, s);
+};
+
+updateUI();
 </script>
 </body>
 </html>
+
+
+
 
 
 
